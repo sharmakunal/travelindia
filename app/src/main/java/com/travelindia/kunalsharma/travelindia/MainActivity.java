@@ -1,5 +1,6 @@
 package com.travelindia.kunalsharma.travelindia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,16 +16,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,GetCategoryJson.OnDataAvailable{
+public class MainActivity extends BaseActivity
+        implements NavigationView.OnNavigationItemSelectedListener,GetCategoryJson.OnDataAvailable,
+        RecyclerItemClickListener.OnRecyclerClickListener{
 
 
      private static final String TAG = "Main Activity";
      private CategoryRecylerViewAdapter mcategoryRecyclerViewAdapter;
+
 
 
     @Override
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view_category);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, this));
 
         mcategoryRecyclerViewAdapter = new CategoryRecylerViewAdapter(this, new ArrayList<Category>());
         recyclerView.setAdapter(mcategoryRecyclerViewAdapter);
@@ -139,5 +145,23 @@ public class MainActivity extends AppCompatActivity
         }
 
         Log.d(TAG, "onDataAvailable: ends");
+    }
+
+
+
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.d(TAG, "onItemClick: starts");
+        Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemLongClick(View view, int position) {
+        Log.d(TAG, "onItemLongClick: starts");
+        //Toast.makeText(MainActivity.this, "Long tap at position " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, PlaceListActivity.class);
+        intent.putExtra("PHOTO_TRANSFER",mcategoryRecyclerViewAdapter.getPhoto(position));
+        startActivity(intent);
     }
 }

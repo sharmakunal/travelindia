@@ -77,11 +77,11 @@ public class GetCategoryJson extends AsyncTask<String, Void, List<Category>> imp
                 for(int i=0; i<category.length(); i++) {
                     JSONObject jsonPlace = category.getJSONObject(i);
 
-                    //int Catid = jsonPlace.getInt("Catid");
+                    int Catid = jsonPlace.getInt("Catid");
                     String Catname = jsonPlace.getString("Catname");
                     String Catthumbnail = jsonPlace.getString("Catthumbnail");
 
-                    Category catObject = new Category(Catname,Catthumbnail);
+                    Category catObject = new Category(Catid,Catname,Catthumbnail);
                     categoryList.add(catObject);
 
                     Log.d(TAG, "onDownloadComplete " + catObject.toString());

@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class CategoryRecylerViewAdapter extends RecyclerView.Adapter<CategoryRec
     private static final String TAG = "CategoryRecylerViewAdapter";
     private List<Category> mPlaceList;
     private Context mContext;
+    private List<Category> list ;
 
     public CategoryRecylerViewAdapter(Context context, List<Category> photosList) {
         mContext = context;
@@ -31,10 +34,10 @@ public class CategoryRecylerViewAdapter extends RecyclerView.Adapter<CategoryRec
     }
 
   @Override
-    public void onBindViewHolder(CategoryRecylerViewAdapter.CategoryImageViewHolder holder, int position) {
+    public void onBindViewHolder(CategoryRecylerViewAdapter.CategoryImageViewHolder holder, final int position) {
         // Called by the layout manager when it wants new data in an existing row
 
-        Category photoItem = mPlaceList.get(position);
+        final Category photoItem = mPlaceList.get(position);
 
         Log.d(TAG, "onBindViewHolder: " + photoItem.getCatName() + " --> " + position);
         Picasso.with(mContext).load(photoItem.getCatthumbnail())
@@ -43,7 +46,7 @@ public class CategoryRecylerViewAdapter extends RecyclerView.Adapter<CategoryRec
                 .into(holder.thumbnail);
 
         holder.title.setText(photoItem.getCatName());
-    }
+}
 
     @Override
     public int getItemCount() {

@@ -9,19 +9,20 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //private int Catid;
+    private int Catid;
     private String CatName;
     private String Catthumbnail;
 
-    public Category(String CatName,String Catthumbnail){
-        CatName=CatName;
-        Catthumbnail=Catthumbnail;
+    public Category(int Catid,String CatName,String Catthumbnail){
+        this.Catid=Catid;
+        this.CatName=CatName;
+        this.Catthumbnail=Catthumbnail;
     }
 
 
-    //public int getCatid() {
-      //  return Catid;
-    //}
+    public int getCatid() {
+       return Catid;
+    }
 
     public String getCatName() {
         return CatName;
@@ -33,8 +34,8 @@ public class Category implements Serializable {
     @Override
     public String toString() {
         return "Category{" +
-               // "  Catid='" + Catid + '\'' +
-                " CatName='" + CatName + '\'' +
+               "  Catid='" + Catid + '\'' +
+                ", CatName='" + CatName + '\'' +
                 ", Catthumbnail='" + Catthumbnail + '\'' +
                 '}';
     }
