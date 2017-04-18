@@ -13,7 +13,7 @@ class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
 
     interface OnRecyclerClickListener {
         void onItemClick(View view, int position);
-        void onItemLongClick(View view, int position);
+        //void onItemLongClick(View view, int position);
     }
 
     private final OnRecyclerClickListener mListener;
@@ -33,7 +33,7 @@ class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
                 return true;
             }
 
-            @Override
+          /*  @Override
             public void onLongPress(MotionEvent e) {
                 Log.d(TAG, "onLongPress: starts");
                 View childView = recyclerView.findChildViewUnder(e.getX(), e.getY());
@@ -41,7 +41,7 @@ class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
                     Log.d(TAG, "onLongPress: calling listener.onItemLongClick");
                     mListener.onItemLongClick(childView, recyclerView.getChildAdapterPosition(childView));
                 }
-            }
+            }*/
         });
     }
 

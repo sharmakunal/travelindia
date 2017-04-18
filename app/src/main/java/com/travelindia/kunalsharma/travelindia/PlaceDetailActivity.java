@@ -7,29 +7,31 @@ import android.graphics.BitmapFactory;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 
-public class PlaceDetailActivity extends BaseActivity {
+public class PlaceDetailActivity extends  BaseActivity{
 
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_detail);
-       // activateToolbar(true);
+        //activateToolbar(true);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-       // collapsingToolbarLayout.setTitle(getResources().getString(R.string.user_name));
+
 
         dynamicToolbarColor();
-
+       // toolbarTextAppernce();
 
         Intent intent = getIntent();
         Place place = (Place) intent.getSerializableExtra(PHOTO_TRANSFER);
@@ -41,6 +43,8 @@ public class PlaceDetailActivity extends BaseActivity {
 
             String title = place.getPname();
             photoTitle.setText(title);
+
+           // collapsingToolbarLayout.setTitle(title);
 
 
             TextView photoInfo = (TextView) findViewById(R.id.place_info);
@@ -68,7 +72,7 @@ public class PlaceDetailActivity extends BaseActivity {
             TextView photoNearby = (TextView) findViewById(R.id.place_nearby);
 
 
-            String nearby = place.getPcity();
+            String nearby = place.getPnearby();
             photoNearby.setText(nearby);
 
             ImageView photoImage = (ImageView) findViewById(R.id.placethumbnail);
@@ -77,16 +81,13 @@ public class PlaceDetailActivity extends BaseActivity {
                     .placeholder(R.drawable.placeholder)
                     .into(photoImage);
         }
-
-
-
     }
 
 
 private void dynamicToolbarColor() {
 
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
-                R.drawable.profile_pic);
+                R.drawable.placeholder);
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
@@ -94,5 +95,10 @@ private void dynamicToolbarColor() {
                 collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(R.attr.colorPrimaryDark));
             }
         });
+    }
+
+    private void toolbarTextAppernce() {
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
     }
 }

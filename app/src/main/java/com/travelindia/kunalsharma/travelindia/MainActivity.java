@@ -38,14 +38,7 @@ public class MainActivity extends BaseActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -153,13 +146,7 @@ public class MainActivity extends BaseActivity
     @Override
     public void onItemClick(View view, int position) {
         Log.d(TAG, "onItemClick: starts");
-        Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onItemLongClick(View view, int position) {
-        Log.d(TAG, "onItemLongClick: starts");
-        //Toast.makeText(MainActivity.this, "Long tap at position " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, PlaceListActivity.class);
         intent.putExtra("PHOTO_TRANSFER",mcategoryRecyclerViewAdapter.getPhoto(position));
         startActivity(intent);

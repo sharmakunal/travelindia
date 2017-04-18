@@ -21,8 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlaceListActivity" />
-        <activity android:name=".PlaceDetailActivity"></activity>
+        <activity android:name=".PlaceListActivity"
+            android:label="Place List"
+            android:parentActivityName=".MainActivity"
+           >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.travelindia.kunalsharma.travelindia.MainActivity"/>
+        </activity>
+
+        <activity android:name=".PlaceDetailActivity"
+            android:label="Place Detail">
+        </activity>
     </application>
 
 </manifest>

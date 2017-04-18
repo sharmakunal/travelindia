@@ -1,4 +1,5 @@
 package com.travelindia.kunalsharma.travelindia;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by kunal sharma on 02-Apr-17.
- */
 
 class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAdapter.PlaceImageViewHolder> {
     private static final String TAG = "PlaceRecyclerViewAdapt";
@@ -47,12 +45,13 @@ class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAda
                 .into(holder.thumbnail);
 
         holder.title.setText(photoItem.getPname());
+        holder.state.setText(photoItem.getPState());
     }
 
     @Override
     public int getItemCount() {
         Log.d(TAG, "getItemCount: called");
-        return ((mPlaceList != null) && (mPlaceList.size() !=0) ? mPlaceList.size() : 0);
+        return ((mPlaceList != null) && (mPlaceList.size() != 0) ? mPlaceList.size() : 0);
     }
 
     void loadNewData(List<Place> newPhotos) {
@@ -61,19 +60,21 @@ class PlaceRecyclerViewAdapter extends RecyclerView.Adapter<PlaceRecyclerViewAda
     }
 
     public Place getPhoto(int position) {
-        return ((mPlaceList != null) && (mPlaceList.size() !=0) ? mPlaceList.get(position) : null);
+        return ((mPlaceList != null) && (mPlaceList.size() != 0) ? mPlaceList.get(position) : null);
     }
 
     static class PlaceImageViewHolder extends RecyclerView.ViewHolder {
         private static final String TAG = "PlaceImageViewHolder";
         ImageView thumbnail = null;
         TextView title = null;
+        TextView state = null;
 
         public PlaceImageViewHolder(View itemView) {
             super(itemView);
             Log.d(TAG, "PlaceImageViewHolder: starts");
             this.thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
             this.title = (TextView) itemView.findViewById(R.id.title);
+            this.state = (TextView) itemView.findViewById(R.id.state);
         }
     }
 }

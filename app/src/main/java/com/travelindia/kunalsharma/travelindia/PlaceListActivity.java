@@ -18,6 +18,7 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
 
     private static final String TAG = "PlaceList Activity";
     private PlaceRecyclerViewAdapter mPlaceRecyclerViewAdapter;
+    public static String cat_id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
         Intent intent = getIntent();
         Category cat = (Category) intent.getSerializableExtra(PHOTO_TRANSFER);
         int id = cat.getCatid();
+        cat_id = String.valueOf(id);
+
 
         RecyclerView recyclerView;
 
@@ -44,20 +47,7 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
         mPlaceRecyclerViewAdapter = new PlaceRecyclerViewAdapter(this, new ArrayList<Place>());
         recyclerView.setAdapter(mPlaceRecyclerViewAdapter);
 
-
-
-       /* if(cat != null) {
-
-            TextView photoTitle = (TextView) findViewById(R.id.textView2);
-            photoTitle.setText("Title: " +cat.getCatid());
-           // Toast.makeText(this, "Normal tap at position " + category.getCatName(), Toast.LENGTH_SHORT).show();
-        }
-        else{
-            TextView photoTitle = (TextView) findViewById(R.id.textView2);
-            photoTitle.setText("Title");
-        }*/
-
-    }
+   }
 
     @Override
     public void onDataAvailable(List<Place> data, DownloadStatus status) {
@@ -76,15 +66,10 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
     @Override
     public void onItemClick(View view, int position) {
         Log.d(TAG, "onItemClick: starts");
-        Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onItemLongClick(View view, int position) {
-        Log.d(TAG, "onItemLongClick: starts");
-        //Toast.makeText(MainActivity.this, "Long tap at position " + position, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, PlaceDetailActivity.class);
-        intent.putExtra("PHOTO_TRANSFER",mPlaceRecyclerViewAdapter.getPhoto(position));
+        intent.putExtra(PHOTO_TRANSFER,mPlaceRecyclerViewAdapter.getPhoto(position));
         startActivity(intent);
     }
+
 }
