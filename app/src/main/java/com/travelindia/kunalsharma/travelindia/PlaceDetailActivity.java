@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 
-public class PlaceDetailActivity extends  BaseActivity{
+public class PlaceDetailActivity extends AppCompatActivity{
 
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
     @Override
@@ -24,27 +24,27 @@ public class PlaceDetailActivity extends  BaseActivity{
         setContentView(R.layout.activity_place_detail);
         //activateToolbar(true);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+       ActionBar actionBar = getSupportActionBar();
+       actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
 
         dynamicToolbarColor();
-       // toolbarTextAppernce();
+        toolbarTextAppernce();
 
         Intent intent = getIntent();
-        Place place = (Place) intent.getSerializableExtra(PHOTO_TRANSFER);
+        Place place = (Place) intent.getSerializableExtra("PHOTO_TRANSFER");
         if(place != null) {
 
 
 
-            TextView photoTitle = (TextView) findViewById(R.id.place_title);
+           // TextView photoTitle = (TextView) findViewById(R.id.place_title);
 
             String title = place.getPname();
-            photoTitle.setText(title);
+           //photoTitle.setText(title);
 
-           // collapsingToolbarLayout.setTitle(title);
+           collapsingToolbarLayout.setTitle(title);
 
 
             TextView photoInfo = (TextView) findViewById(R.id.place_info);
@@ -55,19 +55,19 @@ public class PlaceDetailActivity extends  BaseActivity{
             TextView photoCity = (TextView) findViewById(R.id.place_city);
 
             String city = place.getPcity();
-            photoCity.setText(city);
+            photoCity.setText(" City :  "+city);
 
             TextView photoState = (TextView) findViewById(R.id.place_state);
 
 
             String state = place.getPState();
-            photoState.setText(state);
+            photoState.setText("State :  "+state);
 
-            TextView photoCountry = (TextView) findViewById(R.id.place_country);
+            //TextView photoCountry = (TextView) findViewById(R.id.place_country);
 
 
-            String country = place.getPCountry();
-            photoCountry.setText(country);
+            //String country = place.getPCountry();
+            //photoCountry.setText(country);
 
             TextView photoNearby = (TextView) findViewById(R.id.place_nearby);
 

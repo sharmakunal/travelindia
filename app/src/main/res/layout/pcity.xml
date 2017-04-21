@@ -15,20 +15,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/city" />
+            android:text="@string/city"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textColor="?android:attr/textColorPrimary"/>
 
         <TextView
             android:id="@+id/place_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/state" />
-
-        <TextView
-            android:id="@+id/place_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@string/country" />
+            android:text="@string/state"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textColor="?android:attr/textColorPrimary"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

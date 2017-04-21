@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/info"
+            android:textAlignment="viewStart"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp" />
     </LinearLayout>
