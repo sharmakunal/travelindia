@@ -28,8 +28,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.travelindia.kunalsharma.travelindia.MainActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+
         </activity>
-        <activity android:name=".PlaceDetailActivity"></activity>
+        <activity android:name=".PlaceDetailActivity"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

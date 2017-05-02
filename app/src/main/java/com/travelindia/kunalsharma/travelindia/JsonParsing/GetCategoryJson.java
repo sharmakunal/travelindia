@@ -1,8 +1,12 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.JsonParsing;
 
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.DownloadStatus;
+import com.travelindia.kunalsharma.travelindia.GetRawData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,7 +27,7 @@ public class GetCategoryJson extends AsyncTask<String, Void, List<Category>> imp
         this.mCallBack = mCallBack;
     }
 
-    interface OnDataAvailable {
+    public interface OnDataAvailable {
         void onDataAvailable(List<Category> data, DownloadStatus status);
     }
 

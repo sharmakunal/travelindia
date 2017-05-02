@@ -12,4 +12,5 @@
         <item name="android:navigationBarColor">@color/md_pink_400</item>
 
     </style>
+
 </resources>

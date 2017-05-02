@@ -12,7 +12,7 @@
     <string name="info">info</string>
     <string name="howtoreach">howtoreach</string>
     <string name="image">thumbnail</string>
-    <string name="title_activity_main2">Checking</string>
+    <string name="search">search</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.R;
+
 import java.util.List;
 
 public class CategoryRecylerViewAdapter extends RecyclerView.Adapter<CategoryRecylerViewAdapter.CategoryImageViewHolder> {
@@ -55,7 +57,7 @@ public class CategoryRecylerViewAdapter extends RecyclerView.Adapter<CategoryRec
         return ((mPlaceList != null) && (mPlaceList.size() !=0) ? mPlaceList.size() : 0);
     }
 
-    void loadNewData(List<Category> newPhotos) {
+    public void loadNewData(List<Category> newPhotos) {
         mPlaceList = newPhotos;
         notifyDataSetChanged();
     }

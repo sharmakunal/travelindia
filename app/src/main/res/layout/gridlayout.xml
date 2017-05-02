@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp">
+
+    <ImageView
+        android:id="@+id/os_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/placeholder"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/os_texts1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/os_images"
+        android:text="This is Just Dummy Text"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

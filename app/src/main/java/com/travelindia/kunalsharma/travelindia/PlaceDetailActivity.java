@@ -1,18 +1,17 @@
 package com.travelindia.kunalsharma.travelindia;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
 
 
 public class PlaceDetailActivity extends AppCompatActivity{
@@ -24,8 +23,8 @@ public class PlaceDetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_place_detail);
         //activateToolbar(true);
 
-       ActionBar actionBar = getSupportActionBar();
-       actionBar.setDisplayHomeAsUpEnabled(true);
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 

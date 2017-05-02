@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.PogoClasses;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by kunal sharma on 05-Mar-17.
  */
 
-class Place implements Serializable {
+public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,11 +38,11 @@ class Place implements Serializable {
         return Catid;
     }
 
-     String getPname() {
+     public String getPname() {
         return Pname;
     }
 
-     String getPthumbnail() {
+     public String getPthumbnail() {
         return Pthumbnail;
     }
 
@@ -50,15 +50,15 @@ class Place implements Serializable {
         return Pthumbnailinfo;
     }
 
-    String getPinfo() {
+    public String getPinfo() {
         return Pinfo;
     }
 
-     String getPcity() {
+     public String getPcity() {
         return Pcity;
     }
 
-    String getPState() {
+    public String getPState() {
         return Pstate;
     }
 
@@ -66,7 +66,7 @@ class Place implements Serializable {
         return PCountry;
     }
 
-      String getPnearby() {
+      public String getPnearby() {
         return Pnearby;
     }
 

@@ -1,35 +1,24 @@
 package com.travelindia.kunalsharma.travelindia;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import com.travelindia.kunalsharma.travelindia.Fragments.Categories;
+import com.travelindia.kunalsharma.travelindia.Fragments.States;
 
-import com.travelindia.kunalsharma.travelindia.Fragments.About_Us;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener,GetCategoryJson.OnDataAvailable,
-        RecyclerItemClickListener.OnRecyclerClickListener{
-
+        implements NavigationView.OnNavigationItemSelectedListener{
 
      private static final String TAG = "Main Activity";
-     private CategoryRecylerViewAdapter mcategoryRecyclerViewAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +26,7 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 
 
@@ -49,19 +39,6 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        RecyclerView recyclerView;
-
-        GetCategoryJson gettraveljsondata = new GetCategoryJson(this);
-        gettraveljsondata.execute();
-
-        recyclerView = (RecyclerView)findViewById(R.id.recycler_view_category);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, this));
-
-        mcategoryRecyclerViewAdapter = new CategoryRecylerViewAdapter(this, new ArrayList<Category>());
-        recyclerView.setAdapter(mcategoryRecyclerViewAdapter);
     }
 
     @Override
@@ -73,10 +50,6 @@ public class MainActivity extends BaseActivity
             super.onBackPressed();
         }
     }
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,27 +80,24 @@ public class MainActivity extends BaseActivity
 
         //initializing the fragment object which is selected
         switch (itemId) {
-            case R.id.nav_about_us:
-                /*About_Us cameraImportFragment = new About_Us();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_main,cameraImportFragment)
-                        .addToBackStack(null)
-                        .commit();*/
-               // fragment = new About_Us();
+            case R.id.nav_home:
+               fragment = new Categories();
+                break;
+            case R.id.nav_state:
+                fragment = new States();
                 break;
         }
 
         //replacing the fragment
-        /*if (fragment != null) {
+        if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            //ft.replace(R.id.content_main, fragment);
+            ft.replace(R.id.content_frame, fragment);
             ft.commit();
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -138,29 +108,4 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
-
-    @Override
-    public void onDataAvailable(List<Category> data, DownloadStatus status) {
-        Log.d(TAG, "onDataAvailable: starts");
-        if(status == DownloadStatus.OK) {
-            mcategoryRecyclerViewAdapter.loadNewData(data);
-        } else {
-            // download or processing failed
-            Log.e(TAG, "onDataAvailable failed with status " + status);
-        }
-
-        Log.d(TAG, "onDataAvailable: ends");
-    }
-
-
-
-
-    @Override
-    public void onItemClick(View view, int position) {
-        Log.d(TAG, "onItemClick: starts");
-        //Toast.makeText(this, "Normal tap at position " + position, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, PlaceListActivity.class);
-        intent.putExtra("PHOTO_TRANSFER",mcategoryRecyclerViewAdapter.getPhoto(position));
-        startActivity(intent);
-    }
 }

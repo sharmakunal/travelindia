@@ -1,19 +1,23 @@
 package com.travelindia.kunalsharma.travelindia;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.travelindia.kunalsharma.travelindia.Adapter.PlaceRecyclerViewAdapter;
+import com.travelindia.kunalsharma.travelindia.JsonParsing.GetPlaceJsonData;
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaceListActivity extends BaseActivity implements GetTravelJsonData.OnDataAvailable,
+public class PlaceListActivity extends BaseActivity implements GetPlaceJsonData.OnDataAvailable,
         RecyclerItemClickListener.OnRecyclerClickListener{
 
     private static final String TAG = "PlaceList Activity";
@@ -36,7 +40,7 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
 
         RecyclerView recyclerView;
 
-        GetTravelJsonData  gettraveljsondata = new GetTravelJsonData(this);
+        GetPlaceJsonData gettraveljsondata = new GetPlaceJsonData(this);
         gettraveljsondata.execute();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyler_place_list);
@@ -48,6 +52,17 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
         recyclerView.setAdapter(mPlaceRecyclerViewAdapter);
 
    }
+
+   @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+
+        return true;
+
+        //MenuItem search = menu.findItem(R.id.action_search);
+        //SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+        //search(searchView);
+    }
 
     @Override
     public void onDataAvailable(List<Place> data, DownloadStatus status) {
@@ -72,4 +87,21 @@ public class PlaceListActivity extends BaseActivity implements GetTravelJsonData
         startActivity(intent);
     }
 
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+               // mPlaceRecyclerViewAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+    }
 }

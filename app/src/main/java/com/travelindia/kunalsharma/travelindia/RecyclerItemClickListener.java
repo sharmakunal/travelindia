@@ -8,10 +8,10 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
+public class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchListener {
     private static final String TAG = "RecyclerItemClickListen";
 
-    interface OnRecyclerClickListener {
+    public interface OnRecyclerClickListener {
         void onItemClick(View view, int position);
         //void onItemLongClick(View view, int position);
     }

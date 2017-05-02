@@ -10,10 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-enum DownloadStatus { IDLE, PROCESSING, NOT_INITIALISED, FAILED_OR_EMPTY, OK }
 
-
-class GetRawData extends AsyncTask<String, Void, String> {
+public class GetRawData extends AsyncTask<String, Void, String> {
     private static final String TAG = "GetRawData";
 
     private DownloadStatus mDownloadStatus;
@@ -30,7 +28,7 @@ class GetRawData extends AsyncTask<String, Void, String> {
         Log.d(TAG, "runInSameThread ends");
     }
 
-    interface OnDownloadComplete {
+    public interface OnDownloadComplete {
         void onDownloadComplete(String data, DownloadStatus status);
     }
 

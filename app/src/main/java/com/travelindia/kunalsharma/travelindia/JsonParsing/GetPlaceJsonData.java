@@ -1,7 +1,12 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.JsonParsing;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.travelindia.kunalsharma.travelindia.DownloadStatus;
+import com.travelindia.kunalsharma.travelindia.GetRawData;
+import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.PlaceListActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,13 +14,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.StreamHandler;
 
 /**
  * Created by kunal sharma on 31-Mar-17.
  */
 
-public class GetTravelJsonData extends AsyncTask<String, Void, List<Place>> implements GetRawData.OnDownloadComplete {
+public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> implements GetRawData.OnDownloadComplete {
     private static final String TAG = "GetTravelJsonData";
     private final OnDataAvailable mCallBack;
     private List<Place> mPlaceList = null;
@@ -23,11 +27,11 @@ public class GetTravelJsonData extends AsyncTask<String, Void, List<Place>> impl
     private boolean runningOnSameThread = false;
     //Place placeObject;
 
-    public GetTravelJsonData(OnDataAvailable mCallBack) {
+    public GetPlaceJsonData(OnDataAvailable mCallBack) {
         this.mCallBack = mCallBack;
     }
 
-    interface OnDataAvailable {
+    public interface OnDataAvailable {
         void onDataAvailable(List<Place> data, DownloadStatus status);
     }
 

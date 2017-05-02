@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.PogoClasses;
 
 import java.io.Serializable;
 /**
