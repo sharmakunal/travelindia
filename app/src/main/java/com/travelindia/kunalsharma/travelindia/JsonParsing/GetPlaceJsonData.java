@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.travelindia.kunalsharma.travelindia.DownloadStatus;
 import com.travelindia.kunalsharma.travelindia.GetRawData;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
 import com.travelindia.kunalsharma.travelindia.PlaceListActivity;
 
 import org.json.JSONArray;
@@ -23,12 +23,14 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
     private static final String TAG = "GetTravelJsonData";
     private final OnDataAvailable mCallBack;
     private List<Place> mPlaceList = null;
-
+    private String id;
+    private String url;
     private boolean runningOnSameThread = false;
     //Place placeObject;
 
-    public GetPlaceJsonData(OnDataAvailable mCallBack) {
+    public GetPlaceJsonData(OnDataAvailable mCallBack,String catid){
         this.mCallBack = mCallBack;
+        url= "http://www.yaaranasafar.pe.hu/AndroidBackend/index.php/PlaceOnBasisOfCategory/view_json/"+catid ;
     }
 
     public interface OnDataAvailable {
@@ -36,12 +38,13 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
     }
 
 
+
     void executeOnSameThread() {
         Log.d(TAG, "executeOnSameThread starts");
         runningOnSameThread = true;
 
         GetRawData getRawData = new GetRawData(this);
-        getRawData.execute("http://www.yaaranasafar.pe.hu/AndroidBackend/index.php/GenerateJson");
+        getRawData.execute(url);
 
         Log.d(TAG, "executeOnSameThread ends");
     }
@@ -50,7 +53,7 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
 
     @Override
     protected void onPostExecute(List<Place> photos) {
-        Log.d(TAG, "onPostExecute starts");
+        Log.d(TAG, "onPostExecute starts" + url);
 
         if(mCallBack != null) {
             mCallBack.onDataAvailable(mPlaceList, DownloadStatus.OK);
@@ -62,7 +65,7 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
     protected List<Place> doInBackground(String... params) {
         Log.d(TAG, "doInBackground starts");
         GetRawData getRawData = new GetRawData(this);
-        getRawData.runInSameThread("http://www.yaaranasafar.pe.hu/AndroidBackend/index.php/GenerateJson");
+        getRawData.runInSameThread(url);
         Log.d(TAG, "doInBackground ends");
         return mPlaceList;
     }
@@ -79,14 +82,14 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
                     try {
                 JSONObject jsonData = new JSONObject(data);
 
-                JSONArray article = jsonData.getJSONArray("article");
+                JSONArray article = jsonData.getJSONArray("PlaceOnBasisOfCategory");
 
 
                 for(int i=0; i<article.length(); i++) {
                     JSONObject jsonPlace = article.getJSONObject(i);
                     int Catid = jsonPlace.getInt("Catid");
 
-                    if(String.valueOf(Catid).equals(PlaceListActivity.cat_id)) {
+                   // if(String.valueOf(Catid).equals(PlaceListActivity.cat_id)) {
                         String Pname = jsonPlace.getString("Pname");
                         String Pthumbnail = jsonPlace.getString("Pthumbnail");
                         String Pthumbnailinfo = jsonPlace.getString("Pthumbnailinfo");
@@ -100,7 +103,7 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
                         Place    placeObject = new Place(Catid, Pname, Pthumbnail, Pthumbnailinfo, Pinfo, Pcity, Pstate, PCountry, Pnearby);
                         mPlaceList.add(placeObject);
                         Log.d(TAG, "onDownloadComplete " + placeObject.toString());
-                    }
+                  //  }
 
 
                 }

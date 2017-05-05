@@ -1,35 +1,34 @@
 package com.travelindia.kunalsharma.travelindia.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.squareup.picasso.Picasso;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.State;
+import com.travelindia.kunalsharma.travelindia.Activities.PlaceAccordingToStateActivity;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.State;
 import com.travelindia.kunalsharma.travelindia.R;
 import java.util.List;
 
 public class CustomAdapter extends BaseAdapter{
 
+
+    private static final String TAG = "StateViewAdapater";
     List<State> mphotosList;
     private Context Context;
-    private StateClickListener mStateClickListener;
 
     private static LayoutInflater inflater=null;
-    public CustomAdapter(Context context, List<State> photosList,StateClickListener stateClickListener) {
+    public CustomAdapter(Context context, List<State> photosList) {
         // TODO Auto-generated constructor stub
 
         this.Context=context;
         this.mphotosList=photosList;
         this.inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mStateClickListener=stateClickListener;
-
     }
 
 
@@ -46,7 +45,7 @@ public class CustomAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int position) {
+    public State getItem(int position) {
         // TODO Auto-generated method stub
         return mphotosList.get(position);
     }
@@ -56,23 +55,36 @@ public class CustomAdapter extends BaseAdapter{
         this.notifyDataSetChanged();
     }
 
-    public class Holder implements View.OnClickListener
+    public class Holder
     {
         TextView os_text;
         ImageView os_img;
         int pos;
 
-        public Holder(View convertView,int pos) {
+        public Holder(View convertView,  int pos) {
             os_text =(TextView) convertView.findViewById(R.id.os_texts1);
             os_img =(ImageView) convertView.findViewById(R.id.os_images);
             this.pos=pos;
-            convertView.setOnClickListener(this);
+
+             /*final State c = (State) getItem(pos);
+              int a = c.getStateid();
+              final int stateid = a;
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+
+                  //  Log.d(TAG, String.valueOf(pos));
+                    Toast.makeText(v.getContext(), "You Clicked "+ stateid, Toast.LENGTH_SHORT).show();
+                    Intent comment_page=new Intent(v.getContext(),PlaceAccordingToStateActivity.class);
+                    comment_page.putExtra("position",c);
+                    v.getContext().startActivity(comment_page);
+                }
+            });*/
         }
 
-        @Override
-        public void onClick(View v) {
-            mStateClickListener.onStateClick(pos);
-        }
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -102,9 +114,6 @@ public class CustomAdapter extends BaseAdapter{
                 .into(holder.os_img);
 
         return convertView;
-    }
-    public interface StateClickListener{
-         void onStateClick(int pos);
     }
 
 }

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Category;
 import com.travelindia.kunalsharma.travelindia.R;
 
 import java.util.List;

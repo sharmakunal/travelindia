@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
 
 
 public class PlaceDetailActivity extends AppCompatActivity{
@@ -99,5 +99,11 @@ private void dynamicToolbarColor() {
     private void toolbarTextAppernce() {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+
+    }
+
+    public void functionName(View v)
+    {
+        finish();
     }
 }

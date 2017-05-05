@@ -4,7 +4,7 @@ package com.travelindia.kunalsharma.travelindia.JsonParsing;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Category;
 import com.travelindia.kunalsharma.travelindia.DownloadStatus;
 import com.travelindia.kunalsharma.travelindia.GetRawData;
 

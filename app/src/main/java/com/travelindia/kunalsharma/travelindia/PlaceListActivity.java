@@ -11,8 +11,8 @@ import android.view.View;
 
 import com.travelindia.kunalsharma.travelindia.Adapter.PlaceRecyclerViewAdapter;
 import com.travelindia.kunalsharma.travelindia.JsonParsing.GetPlaceJsonData;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Category;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Category;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class PlaceListActivity extends BaseActivity implements GetPlaceJsonData.
 
         RecyclerView recyclerView;
 
-        GetPlaceJsonData gettraveljsondata = new GetPlaceJsonData(this);
+        GetPlaceJsonData gettraveljsondata = new GetPlaceJsonData(this,cat_id);
         gettraveljsondata.execute();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyler_place_list);

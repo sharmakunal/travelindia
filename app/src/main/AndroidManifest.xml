@@ -30,12 +30,15 @@
                 android:value="com.travelindia.kunalsharma.travelindia.MainActivity" />
 
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".PlaceDetailActivity"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".PlaceDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".Activities.PlaceAccordingToStateActivity">
         </activity>
     </application>
 

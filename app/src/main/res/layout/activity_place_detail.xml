@@ -32,7 +32,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:textAlignment="center"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="functionName"
+                    app:srcCompat="@drawable/back" />
+
+            </android.support.v7.widget.Toolbar>
+
+
+
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

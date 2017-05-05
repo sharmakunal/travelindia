@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-import com.travelindia.kunalsharma.travelindia.PogoClasses.State;
+import com.travelindia.kunalsharma.travelindia.PojoClasses.State;
 
 
 public class GetStateJson extends AsyncTask<String, Void, List<State>> implements GetRawData.OnDownloadComplete {

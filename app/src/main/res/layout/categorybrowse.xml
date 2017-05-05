@@ -16,8 +16,9 @@
         <ImageView
             android:id="@+id/categorythumbnail"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:scaleType="centerCrop"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/placeholder" />
 
         <RelativeLayout
@@ -41,7 +42,7 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </RelativeLayout>
     </RelativeLayout>
 
