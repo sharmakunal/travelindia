@@ -13,7 +13,7 @@ import com.travelindia.kunalsharma.travelindia.PojoClasses.Category;
 import com.travelindia.kunalsharma.travelindia.Adapter.CategoryRecylerViewAdapter;
 import com.travelindia.kunalsharma.travelindia.DownloadStatus;
 import com.travelindia.kunalsharma.travelindia.JsonParsing.GetCategoryJson;
-import com.travelindia.kunalsharma.travelindia.PlaceListActivity;
+import com.travelindia.kunalsharma.travelindia.Activities.PlaceListActivity;
 import com.travelindia.kunalsharma.travelindia.R;
 import com.travelindia.kunalsharma.travelindia.RecyclerItemClickListener;
 import java.util.ArrayList;
@@ -78,10 +78,4 @@ public class Categories extends Fragment implements GetCategoryJson.OnDataAvaila
         startActivity(intent);
     }
 
-    /*@Override
-    public void onViewCreated(View view, @Nullable  Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
-        getActivity();
-    }*/
 }

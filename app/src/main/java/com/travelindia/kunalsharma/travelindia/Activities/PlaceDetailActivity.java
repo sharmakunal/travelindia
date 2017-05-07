@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.R;
 
 
 public class PlaceDetailActivity extends AppCompatActivity{

@@ -1,9 +1,11 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.Activities;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+
+import com.travelindia.kunalsharma.travelindia.R;
 
 /**
  * Created by timbuchalka on 10/08/2016.
@@ -12,7 +14,7 @@ import android.util.Log;
 public class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
     static final String FLICKR_QUERY = "FLICKR_QUERY";
-    static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";
+    protected static final String PHOTO_TRANSFER = "PHOTO_TRANSFER";
 
     void activateToolbar(boolean enableHome) {
         Log.d(TAG, "activateToolbar: starts");

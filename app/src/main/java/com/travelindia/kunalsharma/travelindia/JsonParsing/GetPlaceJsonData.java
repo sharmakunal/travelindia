@@ -6,7 +6,6 @@ import android.util.Log;
 import com.travelindia.kunalsharma.travelindia.DownloadStatus;
 import com.travelindia.kunalsharma.travelindia.GetRawData;
 import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
-import com.travelindia.kunalsharma.travelindia.PlaceListActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,14 +22,12 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
     private static final String TAG = "GetTravelJsonData";
     private final OnDataAvailable mCallBack;
     private List<Place> mPlaceList = null;
-    private String id;
     private String url;
     private boolean runningOnSameThread = false;
-    //Place placeObject;
 
-    public GetPlaceJsonData(OnDataAvailable mCallBack,String catid){
+    public GetPlaceJsonData(OnDataAvailable mCallBack,String type,String id){
         this.mCallBack = mCallBack;
-        url= "http://www.yaaranasafar.pe.hu/AndroidBackend/index.php/PlaceOnBasisOfCategory/view_json/"+catid ;
+        url= "http://www.yaaranasafar.pe.hu/AndroidBackend/index.php/"+type+"/view_json/"+id ;
     }
 
     public interface OnDataAvailable {
@@ -82,12 +79,12 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
                     try {
                 JSONObject jsonData = new JSONObject(data);
 
-                JSONArray article = jsonData.getJSONArray("PlaceOnBasisOfCategory");
+                JSONArray article = jsonData.getJSONArray("Place");
 
 
                 for(int i=0; i<article.length(); i++) {
                     JSONObject jsonPlace = article.getJSONObject(i);
-                    int Catid = jsonPlace.getInt("Catid");
+                        //int Catid = jsonPlace.getInt("Catid");
 
                    // if(String.valueOf(Catid).equals(PlaceListActivity.cat_id)) {
                         String Pname = jsonPlace.getString("Pname");
@@ -100,7 +97,7 @@ public class GetPlaceJsonData extends AsyncTask<String, Void, List<Place>> imple
                         String Pnearby = jsonPlace.getString("Pnearby");
 
 
-                        Place    placeObject = new Place(Catid, Pname, Pthumbnail, Pthumbnailinfo, Pinfo, Pcity, Pstate, PCountry, Pnearby);
+                        Place    placeObject = new Place(Pname, Pthumbnail, Pthumbnailinfo, Pinfo, Pcity, Pstate, PCountry, Pnearby);
                         mPlaceList.add(placeObject);
                         Log.d(TAG, "onDownloadComplete " + placeObject.toString());
                   //  }

@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:padding="3dp">
+    android:padding="5dp">
 
     <ImageView
-        android:id="@+id/os_images"
+        android:id="@+id/thumbnail_images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -14,10 +13,10 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/os_texts1"
+        android:id="@+id/thubnail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/os_images"
+        android:layout_below="@+id/thumbnail_images"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:text="This is Just Dummy Text"

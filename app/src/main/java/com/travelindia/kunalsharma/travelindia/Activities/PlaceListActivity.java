@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,19 +10,23 @@ import android.view.Menu;
 import android.view.View;
 
 import com.travelindia.kunalsharma.travelindia.Adapter.PlaceRecyclerViewAdapter;
+import com.travelindia.kunalsharma.travelindia.DownloadStatus;
 import com.travelindia.kunalsharma.travelindia.JsonParsing.GetPlaceJsonData;
 import com.travelindia.kunalsharma.travelindia.PojoClasses.Category;
 import com.travelindia.kunalsharma.travelindia.PojoClasses.Place;
+import com.travelindia.kunalsharma.travelindia.R;
+import com.travelindia.kunalsharma.travelindia.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceListActivity extends BaseActivity implements GetPlaceJsonData.OnDataAvailable,
-        RecyclerItemClickListener.OnRecyclerClickListener{
+        RecyclerItemClickListener.OnRecyclerClickListener {
 
     private static final String TAG = "PlaceList Activity";
     private PlaceRecyclerViewAdapter mPlaceRecyclerViewAdapter;
-    public static String cat_id = "";
+    private static String cat_id = "";
+    private String type="PlaceOnBasisOfCategory";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,8 @@ public class PlaceListActivity extends BaseActivity implements GetPlaceJsonData.
 
         RecyclerView recyclerView;
 
-        GetPlaceJsonData gettraveljsondata = new GetPlaceJsonData(this,cat_id);
-        gettraveljsondata.execute();
+        GetPlaceJsonData getplacejsondata = new GetPlaceJsonData(this,type,cat_id);
+        getplacejsondata.execute();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyler_place_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

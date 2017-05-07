@@ -1,4 +1,4 @@
-package com.travelindia.kunalsharma.travelindia;
+package com.travelindia.kunalsharma.travelindia.Activities;
 
 
 import android.os.Bundle;
@@ -11,8 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
+
+import com.travelindia.kunalsharma.travelindia.Activities.BaseActivity;
 import com.travelindia.kunalsharma.travelindia.Fragments.Categories;
 import com.travelindia.kunalsharma.travelindia.Fragments.States;
+import com.travelindia.kunalsharma.travelindia.R;
 
 
 public class MainActivity extends BaseActivity

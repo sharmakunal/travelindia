@@ -27,7 +27,7 @@ import static android.content.ContentValues.TAG;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class States extends Fragment implements GetStateJson.OnDataAvailable /*,CustomAdapter.StateClickListener*/{
+public class States extends Fragment implements GetStateJson.OnDataAvailable{
 
 
     public States() {
@@ -59,23 +59,16 @@ public class States extends Fragment implements GetStateJson.OnDataAvailable /*,
                 State c = mstateViewAdapter.getItem(position);
                 int a = c.getStateid();
 
-                Toast.makeText(getActivity(), "You Clicked "+ a, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "You Clicked "+ a, Toast.LENGTH_SHORT).show();
 
-                Intent comment_page=new Intent(getActivity(),PlaceAccordingToStateActivity.class);
-                comment_page.putExtra("position",mstateViewAdapter.getItem(position));
-                startActivity(comment_page);
+                Intent intent=new Intent(getActivity(),PlaceAccordingToStateActivity.class);
+                intent.putExtra("PLACE_TRANSFER",mstateViewAdapter.getItem(position));
+                startActivity(intent);
             }
         });
         return root;
     }
 
-    /*@Override
-    public void onStateClick(int position) {
-        Log.d(TAG, "onStateClick: called at pos "+position);
-        State selectedState=(State)mstateViewAdapter.getItem(position);
-        Log.d(TAG, "onStateClick: is "+selectedState.toString());
-        Toast.makeText(getContext(),selectedState.getStateName()+" clicked",Toast.LENGTH_SHORT).show();
-    }*/
 
     @Override
     public void onDataAvailable(List<State> data, DownloadStatus status) {

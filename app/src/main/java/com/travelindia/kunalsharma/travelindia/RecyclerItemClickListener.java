@@ -13,7 +13,6 @@ public class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchLis
 
     public interface OnRecyclerClickListener {
         void onItemClick(View view, int position);
-        //void onItemLongClick(View view, int position);
     }
 
     private final OnRecyclerClickListener mListener;

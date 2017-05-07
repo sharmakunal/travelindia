@@ -19,11 +19,9 @@ public class Place implements Serializable {
     private String Pstate;
     private String PCountry;
     private String Pnearby;
-    //private String MorePlaces;
 
 
-    public Place(int Catid,String name, String thumbnail, String thumbnailinfo, String info, String city, String State,String Country,String nearby) {
-         Catid=Catid;
+    public Place(String name, String thumbnail, String thumbnailinfo, String info, String city, String State,String Country,String nearby) {
          Pname = name;
          Pthumbnail=thumbnail;
          Pthumbnailinfo=thumbnailinfo;
